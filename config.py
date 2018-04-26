@@ -9,6 +9,7 @@ tracking software, such as neural network properties, particle filter
 properties, etc.
 
 """
+import os
 
 
 class Configuration:
@@ -35,6 +36,11 @@ class Configuration:
 
         # ====================== Video properties ====================== #
         self.framerate = 30
+
+        # ======================= Misc properties ====================== #
+        self.cur_dir = os.path.dirname(os.path.realpath(__file__))
+        self.test_file = os.path.join(self.cur_dir, 'testVids/testVid.wmv')
+        self.test_out = os.path.join(self.cur_dir, 'output/test_out.mp4')
 
 
 if __name__ == '__main__':

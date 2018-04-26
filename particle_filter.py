@@ -10,7 +10,7 @@ implementation for use in the tracking software.
 """
 
 
-class Filter:
+class ParticleFilter:
     """
     Particle filter class
     """

@@ -19,8 +19,6 @@ class VideoProcessor:
     def __init__(self):
         """constructor"""
 
-        self.video = None
-
         self.writer = self.create_writer
 
     def create_writer(self, filename, frame_size, fps=20):
@@ -34,7 +32,7 @@ class VideoProcessor:
         """
 
         # assign fourcc codec of video writer
-        fourcc = cv2.cv.CV_FOURCC(*'MP4V')
+        fourcc = cv2.VideoWriter_fourcc(*'MP4V')
         filename = filename.replace('.mp4', '.avi')  # export as .avi
 
         # create video writer
@@ -42,18 +40,7 @@ class VideoProcessor:
 
         return videoWriter
 
-    def load_video(self, filename):
-        """
-        load a video to make that video the current file to be processed
-        
-        :param filename: string - filename for video
-        :return: 
-        """
-
-        # store video in VideoProcessor object
-        self.video = cv2.VideoCapture(filename)
-
-    def frame_generator(self, filename=''):
+    def frame_generator(self, filename):
         """
         A frame generator that yields a frame every next() call.
         Will return 'None' if there are no frames left in video.
@@ -62,20 +49,19 @@ class VideoProcessor:
         """
 
         # if video name is provided; then load new video into processor
-        if filename:
-            self.load_video(filename)
+        video = cv2.VideoCapture(filename)
 
         # while video is still opened
-        while self.video.isOpened():
+        while video.isOpened():
             # get next
-            ret, frame = self.video.read()
+            ret, frame = video.read()
 
             if ret:
                 yield frame
             else:
                 break
 
-        self.video.release()
+        video.release()
         yield None
 
 

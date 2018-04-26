@@ -27,7 +27,7 @@ def load_files(dirname='train_files'):
     return output_files
 
 
-def show_frame(frame, save_img=False, output_name=''):
+def show_frame(frame, frame_num=0, save_img=False, output_name=''):
     """
     Show video frame to the screen, and also allow for additional options to
     save the image to a file.
@@ -38,7 +38,11 @@ def show_frame(frame, save_img=False, output_name=''):
     :return: 
     """
 
-    cv2.imshow(frame)
+    title = 'Frame number: ' + str(frame_num)
+
+    cv2.imshow(title, frame)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':

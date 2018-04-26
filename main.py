@@ -12,7 +12,7 @@ from util import load_files, show_frame
 from config import Configuration
 from cnn import Network
 from video_processor import VideoProcessor
-from particle_filter import Filter
+from particle_filter import ParticleFilter
 
 ##############################################################################
 __author__ = "Chris Cadonic"
@@ -39,7 +39,7 @@ def main():
     network = Network()
 
     # create a particle filter for tracking
-    pfilter = Filter(config.num_particles)
+    pfilter = ParticleFilter(config.num_particles)
 
     # load files and parse
     train_videos = load_files(config.training_dir)
@@ -49,16 +49,15 @@ def main():
 
     # load video processor for extracting frames during tracking
     vid_reader = VideoProcessor()
+    image_generator = vid_reader.frame_generator(config.test_file)
 
-    vid_reader.load_video('testVids/testVid.mp4')
-
-    image_generator = vid_reader.frame_generator()
-
+    # get first frame of video and the properties of the video
     frame = image_generator.__next__()
-    h, w, d = frame.shape()
+    h, w, d = frame.shape
 
-    out_path = 'output/testVid.mp4'
-    video_out = vid_reader.create_writer(out_path, (w, h), config.framerate)
+    # create video writer for writing out video
+    video_out = vid_reader.create_writer(config.test_out, (w, h),
+                                         config.framerate)
 
     #template = cv2.imread('template.jpg')
 
@@ -68,11 +67,12 @@ def main():
 
         print("Processing frame ", frame_num)
 
-        show_frame(frame)
+        #show_frame(frame, frame_num)
+        #TODO: Run particle tracker here to detect location
 
         video_out.write(frame)
 
-        frame = image_generator.next()
+        frame = image_generator.__next__()
 
         frame_num += 1
 
