@@ -42,7 +42,10 @@ def main():
     pfilter = Filter(config.num_particles)
 
     # load files and parse
-    train_files = load_files('Directory')
+    train_files = load_files('TrainingVideos')
+
+    # load template files and parse
+    templates = load_files('Templates')
 
     # load video processor for extracting frames during tracking
     vid_reader = VideoProcessor()
