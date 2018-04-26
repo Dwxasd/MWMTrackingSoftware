@@ -4,12 +4,13 @@
 """ Code used for object tracking. Primary purpose is for tracking a mouse in
 the Morris Water Maze experiment.
 
-main.py: this contains the main code for running the tracking software.
+particle_filter.py: this contains the code for the Particle Filter
+implementation for use in the tracking software.
 
 """
 
 
-class Filter():
+class Filter:
     """
     Particle filter class
     """

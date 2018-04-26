@@ -4,13 +4,13 @@
 """ Code used for object tracking. Primary purpose is for tracking a mouse in
 the Morris Water Maze experiment.
 
-vide_processor.py: this contains the code for generating a video
+video_processor.py: this contains the code for generating a video
 reader/writer for processing video frames during tracking.
 
 """
 
 
-class VideoProcessor():
+class VideoProcessor:
     """
     Video Processor class
     """

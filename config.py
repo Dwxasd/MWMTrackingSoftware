@@ -10,20 +10,19 @@ properties, etc.
 
 """
 
-class Configuration():
+
+class Configuration:
     """
     Class for storing and maintaining configuration of the tracking software
     """
 
-    def __init___(self):
+    def __init__(self):
 
         # ================== Neural Network properties ================ #
         self.num_layers = 2
 
-
         # ================== Particle Filter properties ================ #
         self.num_particles = 200
-
 
         # ====================== Video properties ====================== #
         self.framerate = 30

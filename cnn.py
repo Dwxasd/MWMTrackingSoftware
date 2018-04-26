@@ -10,7 +10,7 @@ network to detect a mouse location during swimming during the tracking.
 """
 
 
-class Network():
+class Network:
     """
     Convolutional Neural Network class
     """
