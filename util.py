@@ -8,6 +8,7 @@ util.py: this contains all utility functions for use in the tracking software.
 
 """
 import os
+import cv2
 
 
 def load_files(dirname='train_files'):
@@ -24,6 +25,20 @@ def load_files(dirname='train_files'):
     #TODO: Load files
 
     return output_files
+
+
+def show_frame(frame, save_img=False, output_name=''):
+    """
+    Show video frame to the screen, and also allow for additional options to
+    save the image to a file.
+    
+    :param frame: ndarray - the image frame to be shown
+    :param save_img: bool - whether or not to save frame to an output image
+    :param output_name: string - file name for output image to be saved 
+    :return: 
+    """
+
+    cv2.imshow(frame)
 
 
 if __name__ == '__main__':
