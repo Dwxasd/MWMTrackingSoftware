@@ -19,10 +19,19 @@ class Configuration:
     def __init__(self):
 
         # ================== Neural Network properties ================ #
+        # directory information
+        self.training_dir = 'train_files'
+
+        # cNN properties
         self.num_layers = 2
 
+
         # ================== Particle Filter properties ================ #
+        # directory information
+        self.template_dir = 'templates'
         self.num_particles = 200
+
+        # particle filter properties
 
         # ====================== Video properties ====================== #
         self.framerate = 30

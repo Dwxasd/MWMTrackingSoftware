@@ -33,19 +33,19 @@ def main():
     """
 
     # Load configuration for
-    configs = Configuration()
+    config = Configuration()
 
     # create a convolutional neural net to train and detect mouse location
     network = Network()
 
     # create a particle filter for tracking
-    pfilter = Filter(configs.num_particles)
+    pfilter = Filter(config.num_particles)
 
     # load files and parse
-    train_files = load_files('TrainingVideos')
+    train_videos = load_files(config.training_dir)
 
     # load template files and parse
-    templates = load_files('Templates')
+    templates = load_files(config.template_dir)
 
     # load video processor for extracting frames during tracking
     vid_reader = VideoProcessor()
